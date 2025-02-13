@@ -1,0 +1,38 @@
+
+<!-- Camera selection dropdown -->
+<div class="container">
+  <div class="camera-selection">
+    <label for="camera">Select Camera:</label>
+    <select id="camera" (change)="onDeviceSelectChange($event)">
+      <option *ngFor="let device of devices" [value]="device.deviceId">
+        {{ device.label || 'Unnamed Camera' }}
+      </option>
+    </select>
+  </div>
+  
+  <!-- Video element to display the live stream -->
+  <video #videoElement width="100%" height="auto" autoplay></video>
+  
+  <!-- Canvas element to capture the image -->
+  <canvas #canvasElement style="display: none;"></canvas>
+ <div class="clickables">
+    
+    <!-- Button to capture an image -->
+    <button (click)="captureImage()">Capture Image</button>
+    
+    <!-- Button to turn on the camera -->
+    <button (click)="startCamera()" style="width: 50px;background-color: green;">
+      <object data="assets/cam_on.svg" type="image/svg+xml"></object>
+
+    </button>
+    
+    <!-- Button to stop the camera stream -->
+    <button (click)="stopVideoStream()" style="width: 50px;background-color: red;">
+      <object data="assets/cam_off.svg" type="image/svg+xml"></object>
+    </button>
+    
+ </div>
+</div>
+<!-- Messages -->
+<div *ngIf="attendanceMessage" class="success-message">{{ attendanceMessage }}</div>
+<div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>

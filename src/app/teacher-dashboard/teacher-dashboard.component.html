@@ -1,0 +1,64 @@
+
+<div *ngIf="!qrCode">
+  <div class="main-container">
+    <!-- <h3>Create Attendance Session</h3> -->
+      <form [formGroup]="form" (ngSubmit)="createSession()">
+        <label for="topic">Topic:</label>
+        <input type="text" class="form-control" formControlName="topic" id="topic">
+    
+        <label for="date">Select Date:</label>
+        <input type="date" class="form-control" formControlName="date" id="date">
+    
+        <label for="batch">Batch Number:</label>
+        <input type="text" class="form-control" formControlName="batch" id="batch">
+        <div class="mb-3">
+          <label for="TeacherEmail" class="form-label">Teacher's Email</label>
+          <input type="email" class="form-control" formControlName="teacherEmail" id="teacherEmail">
+        </div>
+    
+    
+        <button type="submit" class="btn btn-primary mt-3">Create Session</button>
+      </form>
+  
+</div>
+  
+</div>
+<!-- QR Code Display -->
+<div *ngIf="qrCode">
+  <h3>Scan QR Code to Mark Attendance</h3>
+  <img [src]="qrCode" alt="QR Code" />
+</div>
+<button *ngIf="qrCode" (click)="resetSession()" class="btn btn-danger mt-3">Create New Session</button>
+<!-- Get Attendance -->
+<div class="attendance-form mt-4">
+  <h3>View Attendance</h3>
+  <button (click)="getPresentStudents()" class="btn btn-success">Get Attendance</button>
+
+  <div *ngIf="isLive">
+    <p>✅ Live updates enabled...</p>
+  </div>
+</div>
+
+<!-- Attendance List -->
+<div *ngIf="presentStudents.length > 0">
+  <h3>Present Students</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Roll Number</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of presentStudents">
+        <td>{{ student.rollNumber }}</td>
+        <td>{{ student.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Error Message -->
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
+</div>

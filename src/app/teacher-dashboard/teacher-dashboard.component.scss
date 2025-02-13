@@ -1,0 +1,54 @@
+
+// .main-container{
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+.main-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width:60rem;
+    height: 60vh;
+    border: 3px solid;
+    border-radius: 15px;
+    margin-left: 20%;
+    margin-top: 2rem;
+
+}
+
+.form{
+    margin-top: 1rem;
+    
+
+}
+input{
+    width: 35rem;
+}
+.QR{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.student-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .student-table th, .student-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .student-table th {
+    background-color: #007bff;
+    color: white;
+  }

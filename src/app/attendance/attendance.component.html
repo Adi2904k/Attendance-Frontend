@@ -1,0 +1,17 @@
+<div class="qr-section">
+    <h2>Scan QR Code to Mark Attendance</h2>
+    <qrcode [qrdata]="qrData" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+  </div>
+  
+  <div class="present-students-section">
+    <h2>Present Students</h2>
+    <ul *ngIf="presentStudents.length > 0; else noData">
+      <li *ngFor="let student of presentStudents">
+        {{ student.name }} - {{ student.rollNumber }}
+      </li>
+    </ul>
+    <ng-template #noData>
+      <p>No attendance marked for today.</p>
+    </ng-template>
+  </div>
+  
